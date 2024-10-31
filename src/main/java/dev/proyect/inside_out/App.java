@@ -1,10 +1,10 @@
 package dev.proyect.inside_out;
 
 public final class App {
-    private App() {
-    }
-
+  
     public static void main(String[] args) {
-        System.out.println("Hello World!");
+
+        System.out.println("Hi");
+
     }
 }
