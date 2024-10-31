@@ -15,7 +15,7 @@ import java.util.List;
 public class Emotion {
 
     private static final List<String> emotions = Arrays.asList(
-    "Alegría",
+        "Alegría",
         "Tristeza",
         "Ira",
         "Asco",
