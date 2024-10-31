@@ -14,7 +14,7 @@ import java.util.List;
  */
 public class Emotion {
 
-    private static List<String> emotions = Arrays.asList(
+    private static final List<String> emotions = Arrays.asList(
     "Alegría",
         "Tristeza",
         "Ira",
@@ -28,7 +28,7 @@ public class Emotion {
     );
 
     public static String getEmotionByIndex(int index) {
-        return emotions.get(index-1);
+        return emotions.get(index);
     }
 
     public static List<String> getEmotions() {
