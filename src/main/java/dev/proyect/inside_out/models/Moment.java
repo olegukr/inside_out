@@ -71,4 +71,5 @@ public class Moment {
 
     private void updateModificationDate() {
         this.modificationDate = new Date();
-    }}
+    }
+}
