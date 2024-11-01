@@ -10,7 +10,7 @@ public class Moment {
     private Date momentDate;
     private Date creationDate;
     private Date modificationDate;
-
+    
     public Moment(int id, String title, String emotion, String description, Date momentDate) {
         this.id = id;
         this.title = title;
