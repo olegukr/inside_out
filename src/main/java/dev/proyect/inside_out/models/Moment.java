@@ -1,83 +1,69 @@
 package dev.proyect.inside_out.models;
-
-import java.time.LocalDate;
-
+import java.util.Date;
 public class Moment {
-    private int id = 0;
+    private int id;
     private String title;
     private String emotion;
     private String description;
-    private LocalDate momentDate;
-    private final LocalDate creationDate;
-    private LocalDate modificationDate;
-    
-    public Moment(
-        int id, 
-        String title, 
-        String emotion, 
-        String description, 
-        LocalDate momentDate, 
-        LocalDate creationDate, 
-        LocalDate modificationDate) {
-            
-            this.id = id++;
-            this.title = title;
-            this.emotion = emotion;
-            this.description = description;
-            this.momentDate = momentDate;
-            this.creationDate = creationDate;
-            this.modificationDate = modificationDate;
-        }
-    
-        public int getId() {
-            return id;
+    private Date momentDate;
+    private Date creationDate;
+    private Date modificationDate;
+    public Moment(int id, String title, String emotion, String description, Date momentDate) {
+        this.id = id;
+        this.title = title;
+        this.emotion = emotion;
+        this.description = description;
+        this.momentDate = momentDate;
+        this.creationDate = new Date();
+        this.modificationDate = new Date();
     }
-
+    public int getId() {
+        return id;
+    }
     public String getTitle() {
         return title;
     }
-
     public String getEmotion() {
         return emotion;
     }
-
     public String getDescription() {
         return description;
     }
-
-    public LocalDate getMomentDate() {
+    public Date getMomentDate() {
         return momentDate;
     }
-
-    public LocalDate getCreationDate() {
+    public Date getCreationDate() {
         return creationDate;
     }
-
-    public LocalDate getModificationDate() {
+    public Date getModificationDate() {
         return modificationDate;
     }
-
     public void setTitle(String title) {
         this.title = title;
         updateModificationDate();
     }
-
     public void setEmotion(String emotion) {
         this.emotion = emotion;
         updateModificationDate();
     }
-
     public void setDescription(String description) {
         this.description = description;
         updateModificationDate();
     }
-
-    public void setMomentDate(LocalDate newMomentDate) {
-        this.momentDate = newMomentDate;
+    public void setMomentDate(Date momentDate) {
+        this.momentDate = momentDate;
         updateModificationDate();
     }
-
     private void updateModificationDate() {
-        this.modificationDate = LocalDate.now();
+        this.modificationDate = new Date();
     }
 }
+
+
+
+
+
+
+
+
+
