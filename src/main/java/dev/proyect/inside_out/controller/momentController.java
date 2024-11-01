@@ -6,7 +6,7 @@ import java.util.Date;
 
 import dev.proyect.inside_out.models.Moment;
 
-public class momentController {
+public class MomentController {
     
     List<Moment> moments = new ArrayList<Moment>();
 
