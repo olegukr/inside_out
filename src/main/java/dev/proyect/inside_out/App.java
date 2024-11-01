@@ -1,5 +1,7 @@
 package dev.proyect.inside_out;
 import java.util.Scanner;
+import dev.proyect.inside_out.models.Moment;
+import dev.proyect.inside_out.controller.MomentController;
 
 public final class App {
     
@@ -44,7 +46,33 @@ public final class App {
                 pressEnterToContinue();
             }
             else if(menuSelection == 4){
-                System.out.println("menu 4");
+                int filterSelection = -1;
+                
+                while(filterSelection >= 1  || filterSelection <= 2){
+                    System.err.println("Filtrar por ...:");
+                    System.err.println("1. Emoción");
+                    System.err.println("2. Fecha");
+                    System.out.print("Ingrese una opción: "); 
+                    filterSelection = scanner.nextInt();
+                    if(filterSelection == 1){
+                        System.out.println("Filtrando por emocion");
+                        break;
+
+                    }
+                    else if(filterSelection == 2){
+                        System.out.println("Filtrando por fecha");
+                        break;
+                    }
+                }                    
+                // MomentController momentController = new MomentController();
+                // for (Moment moment : momentController.getFilterByEmotion(6)) {
+                //     System.out.println(moment.getMomentDate());
+                //     System.out.println(moment.getTitle());
+                //     System.out.println(moment.getDescription());
+                //     System.out.println(moment.getEmotion());
+                //     System.out.println();
+                // }
+                
                 pressEnterToContinue();
             }
             else if(menuSelection == 5){
