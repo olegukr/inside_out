@@ -8,7 +8,8 @@ public final class App {
     private static void pressEnterToContinue()
     {       
             Scanner scanner = new Scanner(System.in);
-
+            
+            System.out.println();
             System.out.println("Press Enter key continue...");
             try
             {
@@ -20,9 +21,10 @@ public final class App {
     }
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        int menuSelection = -1;
-
-        while(menuSelection >= 1  || menuSelection <= 5){
+        boolean flag = true;
+        while(flag){
+            int menuSelection;
+            System.err.println("");
             System.err.println("My diario:");
             System.err.println("1. Añadir momento");
             System.err.println("2. Ver todos los momentos disponibles");
@@ -46,37 +48,55 @@ public final class App {
                 pressEnterToContinue();
             }
             else if(menuSelection == 4){
-                int filterSelection = -1;
+                int filterSelection;
                 
-                while(filterSelection >= 1  || filterSelection <= 2){
+                do{
+                    System.err.println("");
                     System.err.println("Filtrar por ...:");
                     System.err.println("1. Emoción");
                     System.err.println("2. Fecha");
                     System.out.print("Ingrese una opción: "); 
                     filterSelection = scanner.nextInt();
                     if(filterSelection == 1){
-                        System.out.println("Filtrando por emocion");
-                        break;
+                        
+                        int emotionSelection;
+                        do{
+                            System.err.println("");
+                            System.err.println("Selecciona una emoción:");
+                            System.err.println("1. Emoción");
+                            System.err.println("2. Tristeza");
+                            System.err.println("3. Ira");
+                            System.err.println("4. Asco");
+                            System.err.println("5. Miedo");
+                            System.err.println("6. Ansiedad");
+                            System.err.println("7. Envidia");
+                            System.err.println("8. Vergüenza");
+                            System.err.println("9. Aburrimiento");
+                            System.err.println("10. Nostalgia");
+                            System.out.print("Ingrese una opción: "); 
+                            emotionSelection = scanner.nextInt();
 
+                            if(emotionSelection >= 1  && emotionSelection <= 10){
+                                MomentController momentController = new MomentController();
+                                for (Moment moment : momentController.getFilterByEmotion(emotionSelection)) {
+                                    System.out.println();
+                                    System.out.println(moment.getMomentDate());
+                                    System.out.println(moment.getTitle());
+                                    System.out.println(moment.getDescription());
+                                    System.out.println(moment.getEmotion());
+                                }
+                            }
+                        }while(emotionSelection < 1  || emotionSelection > 10);
                     }
                     else if(filterSelection == 2){
                         System.out.println("Filtrando por fecha");
-                        break;
                     }
-                }                    
-                // MomentController momentController = new MomentController();
-                // for (Moment moment : momentController.getFilterByEmotion(6)) {
-                //     System.out.println(moment.getMomentDate());
-                //     System.out.println(moment.getTitle());
-                //     System.out.println(moment.getDescription());
-                //     System.out.println(moment.getEmotion());
-                //     System.out.println();
-                // }
+                }while(filterSelection < 1  || filterSelection > 2);                    
                 
                 pressEnterToContinue();
             }
             else if(menuSelection == 5){
-                System.out.println("See you later");
+                flag = false;
                 break;
             }
 
