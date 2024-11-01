@@ -35,7 +35,6 @@ public class MomentTest {
 
     @Test
     public void testSetTitle() {
-        Date initialModificationDate = moment.getModificationDate();
         moment.setTitle("Nuevo Título");
         
         assertThat("El título debe ser 'Nuevo Título'", moment.getTitle(), is("Nuevo Título"));
@@ -43,7 +42,6 @@ public class MomentTest {
 
     @Test
     public void testSetEmotion() {
-        Date initialModificationDate = moment.getModificationDate();
         moment.setEmotion("Tristeza");
 
         assertThat("La emoción debe ser 'Tristeza'", moment.getEmotion(), is("Tristeza"));
@@ -51,7 +49,6 @@ public class MomentTest {
 
     @Test
     public void testSetDescription() {
-        Date initialModificationDate = moment.getModificationDate();
         moment.setDescription("Nueva Descripción");
 
         assertThat("La descripción debe ser 'Nueva Descripción'", moment.getDescription(), is("Nueva Descripción"));
@@ -59,7 +56,6 @@ public class MomentTest {
 
     @Test
     public void testSetMomentDate() {
-        Date initialModificationDate = moment.getModificationDate();
         Date newMomentDate = new Date();
         moment.setMomentDate(newMomentDate);
 
@@ -68,12 +64,7 @@ public class MomentTest {
 
     @Test
     public void testModificationDateUpdates() {
-        Date initialModificationDate = moment.getModificationDate();
-        
         moment.setTitle("Título Actualizado");
-        
-        Date updatedModificationDate = moment.getModificationDate();
-        
         moment.setDescription("Descripción Actualizada");
     }
 }
