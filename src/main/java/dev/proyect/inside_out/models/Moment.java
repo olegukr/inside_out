@@ -1,28 +1,36 @@
 package dev.proyect.inside_out.models;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 public class Moment {
-    private int id;
+    private int id = 0;
     private String title;
     private String emotion;
     private String description;
-    private Date momentDate;
-    private Date creationDate;
-    private Date modificationDate;
+    private LocalDate momentDate;
+    private final LocalDate creationDate;
+    private LocalDate modificationDate;
     
-    public Moment(int id, String title, String emotion, String description, Date momentDate) {
-        this.id = id;
-        this.title = title;
-        this.emotion = emotion;
-        this.description = description;
-        this.momentDate = momentDate;
-        this.creationDate = new Date();
-        this.modificationDate = new Date();
-    }
-
-    public int getId() {
-        return id;
+    public Moment(
+        int id, 
+        String title, 
+        String emotion, 
+        String description, 
+        LocalDate momentDate, 
+        LocalDate creationDate, 
+        LocalDate modificationDate) {
+            
+            this.id = id++;
+            this.title = title;
+            this.emotion = emotion;
+            this.description = description;
+            this.momentDate = momentDate;
+            this.creationDate = creationDate;
+            this.modificationDate = modificationDate;
+        }
+    
+        public int getId() {
+            return id;
     }
 
     public String getTitle() {
@@ -37,15 +45,15 @@ public class Moment {
         return description;
     }
 
-    public Date getMomentDate() {
+    public LocalDate getMomentDate() {
         return momentDate;
     }
 
-    public Date getCreationDate() {
+    public LocalDate getCreationDate() {
         return creationDate;
     }
 
-    public Date getModificationDate() {
+    public LocalDate getModificationDate() {
         return modificationDate;
     }
 
@@ -64,12 +72,12 @@ public class Moment {
         updateModificationDate();
     }
 
-    public void setMomentDate(Date momentDate) {
-        this.momentDate = momentDate;
+    public void setMomentDate(LocalDate newMomentDate) {
+        this.momentDate = newMomentDate;
         updateModificationDate();
     }
 
     private void updateModificationDate() {
-        this.modificationDate = new Date();
+        this.modificationDate = LocalDate.now();
     }
 }
