@@ -1,6 +1,8 @@
 package dev.proyect.inside_out;
 import java.util.Scanner;
 
+import dev.proyect.inside_out.view.View;
+
 public final class App {
     
     private static void pressEnterToContinue()
@@ -29,26 +31,29 @@ public final class App {
             System.err.println("5. Salir");
             System.out.print("Seleccione una opción: "); 
             menuSelection = scanner.nextInt();
+            scanner.nextLine(); 
 
 
             if(menuSelection == 1){
                 System.out.println("menu 1");
-                pressEnterToContinue();
+                // pressEnterToContinue();
             }
             else if(menuSelection == 2){
                 System.out.println("menu 2");
-                pressEnterToContinue();
+                View.showAllMoments();     
+                // pressEnterToContinue();
             }
             else if(menuSelection == 3){
                 System.out.println("menu 3");
-                pressEnterToContinue();
+                // pressEnterToContinue();
             }
             else if(menuSelection == 4){
                 System.out.println("menu 4");
-                pressEnterToContinue();
+                // pressEnterToContinue();
             }
             else if(menuSelection == 5){
                 System.out.println("See you later");
+                scanner.close();
                 break;
             }
 
