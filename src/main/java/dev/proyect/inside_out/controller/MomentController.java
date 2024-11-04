@@ -48,7 +48,31 @@ public class MomentController {
         return momentsByEmotion;
     }
     public List<Moment> getFilterByDate(String date){
-        
+        Date momentDate = new Date();
+        Moment moment1 = new Moment(1, "Mi Título", "Felicidad", "Esta es una descripción", momentDate);
+        Moment moment2 = new Moment(1, "Mi Título", "Tristeza", "Esta es una descripción", momentDate);
+        Moment moment3 = new Moment(1, "Mi Título", "Ansiedad", "Esta es una descripción", momentDate);
+        Moment moment4 = new Moment(1, "Mi Título", "Ansiedad", "Esta es una descripción", momentDate);
+        Moment moment5 = new Moment(1, "Mi Título", "Ansiedad", "Esta es una descripción", momentDate);
+        Moment moment6 = new Moment(1, "Mi Título", "Aburrimiento", "Esta es una descripción", momentDate);
+        moments.add(moment1);
+        moments.add(moment2);
+        moments.add(moment3);
+        moments.add(moment4);
+        moments.add(moment5);
+        moments.add(moment6);
+
+
+
+        List<Moment> momentsByDate = new ArrayList<Moment>();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");        
+        LocalDate inputDate = LocalDate.parse(date, formatter);
+
+        for (Moment moment : moments) {
+            if (moment.getMomentDate() ==  inputDate.get){
+                momentsByDate.add(moment);
+            }
+        }
         return moments;
     }
 

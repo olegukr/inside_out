@@ -22,15 +22,15 @@ public final class App {
         MomentController momentController = new MomentController();
         while(flag){
             int menuSelection;
-            System.err.println("");
-            System.err.println("My diario:");
-            System.err.println("1. Añadir momento");
-            System.err.println("2. Ver todos los momentos disponibles");
-            System.err.println("3. Eliminar un momento");
-            System.err.println("4. Filtrar los momentos");
-            System.err.println("5. Salir");
+            System.out.println("");
+            System.out.println("My diario:");
+            System.out.println("1. Añadir momento");
+            System.out.println("2. Ver todos los momentos disponibles");
+            System.out.println("3. Eliminar un momento");
+            System.out.println("4. Filtrar los momentos");
+            System.out.println("5. Salir");
             System.out.print("Seleccione una opción: "); 
-            menuSelection = scanner.nextInt();
+            menuSelection = scanner.nextInt(); 
 
 
             if(menuSelection == 1){
@@ -49,28 +49,28 @@ public final class App {
                 int filterSelection;
                 
                 do{
-                    System.err.println("");
-                    System.err.println("Filtrar por ...:");
-                    System.err.println("1. Emoción");
-                    System.err.println("2. Fecha");
+                    System.out.println("");
+                    System.out.println("Filtrar por ...:");
+                    System.out.println("1. Emoción");
+                    System.out.println("2. Fecha");
                     System.out.print("Ingrese una opción: "); 
                     filterSelection = scanner.nextInt();
                     if(filterSelection == 1){
                         
                         int emotionSelection;
                         do{
-                            System.err.println("");
-                            System.err.println("Selecciona una emoción:");
-                            System.err.println("1. Emoción");
-                            System.err.println("2. Tristeza");
-                            System.err.println("3. Ira");
-                            System.err.println("4. Asco");
-                            System.err.println("5. Miedo");
-                            System.err.println("6. Ansiedad");
-                            System.err.println("7. Envidia");
-                            System.err.println("8. Vergüenza");
-                            System.err.println("9. Aburrimiento");
-                            System.err.println("10. Nostalgia");
+                            System.out.println("");
+                            System.out.println("Selecciona una emoción:");
+                            System.out.println("1. Emoción");
+                            System.out.println("2. Tristeza");
+                            System.out.println("3. Ira");
+                            System.out.println("4. Asco");
+                            System.out.println("5. Miedo");
+                            System.out.println("6. Ansiedad");
+                            System.out.println("7. Envidia");
+                            System.out.println("8. Vergüenza");
+                            System.out.println("9. Aburrimiento");
+                            System.out.println("10. Nostalgia");
                             System.out.print("Ingrese una opción: "); 
                             emotionSelection = scanner.nextInt();
 
@@ -87,7 +87,10 @@ public final class App {
                         }while(emotionSelection < 1  || emotionSelection > 10);
                     }
                     else if(filterSelection == 2){
-                        System.out.println("Filtrando por fecha");
+                        String date = new String();
+                        System.out.print("Ingrese una fecha (dd/mm/year): ");
+                        date = scanner.next();
+                        momentController.getFilterByDate(date);
                     }
                 }while(filterSelection < 1  || filterSelection > 2);                    
                 
