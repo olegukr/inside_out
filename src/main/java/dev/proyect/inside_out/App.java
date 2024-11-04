@@ -25,7 +25,7 @@ public final class App {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         boolean flag = true;
-        MomentController momentController = new MomentController();
+        MomentController controller = new MomentController();
         while(flag){
             int menuSelection;
             System.err.println("");
@@ -38,7 +38,7 @@ public final class App {
             System.out.print("Seleccione una opción: ");
             menuSelection = scanner.nextInt();
             if(menuSelection == 1){
-                MomentController controller = new MomentController();
+                // MomentController controller = new MomentController();
                 
                 System.out.println("Seleccione una emoción:");
                 List<String> emotions = Emotion.getEmotions();
@@ -70,7 +70,7 @@ public final class App {
             }
             else if(menuSelection == 2){
                 System.out.println("menu 2");
-                List<Moment> moments = momentController.getMoments();
+                List<Moment> moments = Moment.getMoments();
                 for (Moment moment : moments) {
                     System.out.println("ID: " + moment.getId());
                     System.out.println("Título: " + moment.getTitle());
@@ -118,7 +118,7 @@ public final class App {
 
                             if(emotionSelection >= 1  && emotionSelection <= 10){
                                 
-                                for (Moment moment : momentController.getFilterByEmotion(emotionSelection)) {
+                                for (Moment moment : controller.getFilterByEmotion(emotionSelection)) {
                                     System.out.println();
                                     System.out.println(moment.getMomentDate());
                                     System.out.println(moment.getTitle());
