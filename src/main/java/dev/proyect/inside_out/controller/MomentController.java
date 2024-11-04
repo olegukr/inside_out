@@ -1,5 +1,4 @@
 package dev.proyect.inside_out.controller;
-
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Date;
@@ -10,7 +9,7 @@ import java.time.format.DateTimeFormatter;
 
 public class MomentController {
     
-    private List<Moment> moments = new ArrayList<Moment>();
+    // private List<Moment> moments = new ArrayList<Moment>();
 
     public void addMoment(String title, int emotionIndex, String description, LocalDate momentDate) {
         if (emotionIndex < 0 || emotionIndex >= Emotion.getEmotions().size()) {
@@ -19,15 +18,12 @@ public class MomentController {
         
         String emotion = Emotion.getEmotionByIndex(emotionIndex);
         
-        Moment newMoment = new Moment(1,title, emotion, description, momentDate);
+        Moment newMoment = new Moment(title, emotion, description, momentDate);
         
         System.out.println("Nuevo momento agregado: " + newMoment.getTitle());
     }
-    // public List<Moment> getMoments(){
 
-    // }
     // public List<Moment> deleteMoment(Moment moment){
-
     // }
     public List<Moment> getFilterByEmotion(int index) {
         int indexEmotion = index - 1;
@@ -61,6 +57,5 @@ public class MomentController {
     }
 
     // updateMomentDate( Date) void {
-
     // }
 }
