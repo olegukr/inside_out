@@ -6,9 +6,9 @@ import java.time.format.DateTimeParseException;
 import java.util.List;
 import java.util.Scanner;
 
+import dev.proyect.inside_out.controller.MomentController;
 import dev.proyect.inside_out.models.Emotion;
 import dev.proyect.inside_out.models.Moment;
-import dev.proyect.inside_out.controller.MomentController;
 
 public final class App {
     
@@ -25,22 +25,20 @@ public final class App {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         boolean flag = true;
-        MomentController momentController = new MomentController();
+        MomentController controller = new MomentController();
         while(flag){
             int menuSelection;
-            System.out.println("");
-            System.out.println("My diario:");
-            System.out.println("1. Añadir momento");
-            System.out.println("2. Ver todos los momentos disponibles");
-            System.out.println("3. Eliminar un momento");
-            System.out.println("4. Filtrar los momentos");
-            System.out.println("5. Salir");
-            System.out.print("Seleccione una opción: "); 
-            menuSelection = scanner.nextInt(); 
-
-
+            System.err.println("");
+            System.err.println("My diario:");
+            System.err.println("1. Añadir momento");
+            System.err.println("2. Ver todos los momentos disponibles");
+            System.err.println("3. Eliminar un momento");
+            System.err.println("4. Filtrar los momentos");
+            System.err.println("5. Salir");
+            System.out.print("Seleccione una opción: ");
+            menuSelection = scanner.nextInt();
             if(menuSelection == 1){
-                MomentController controller = new MomentController();
+                // MomentController controller = new MomentController();
                 
                 System.out.println("Seleccione una emoción:");
                 List<String> emotions = Emotion.getEmotions();
@@ -72,6 +70,17 @@ public final class App {
             }
             else if(menuSelection == 2){
                 System.out.println("menu 2");
+                List<Moment> moments = Moment.getMoments();
+                for (Moment moment : moments) {
+                    System.out.println("ID: " + moment.getId());
+                    System.out.println("Título: " + moment.getTitle());
+                    System.out.println("Emoción: " + moment.getEmotion());
+                    System.out.println("Descripción: " + moment.getDescription());
+                    System.out.println("Fecha del momento: " + moment.getMomentDate());
+                    System.out.println("Fecha del CreationDate: " + moment.getCreationDate());
+                    System.out.println("Fecha del ModificationDate: " + moment.getModificationDate());
+                    System.out.println();
+                }
                 pressEnterToContinue(scanner);
             }
             else if(menuSelection == 3){
@@ -109,7 +118,7 @@ public final class App {
 
                             if(emotionSelection >= 1  && emotionSelection <= 10){
                                 
-                                for (Moment moment : momentController.getFilterByEmotion(emotionSelection)) {
+                                for (Moment moment : controller.getFilterByEmotion(emotionSelection)) {
                                     System.out.println();
                                     System.out.println(moment.getMomentDate());
                                     System.out.println(moment.getTitle());
@@ -123,7 +132,7 @@ public final class App {
                         String date = new String();
                         System.out.print("Ingrese una fecha (dd/mm/year): ");
                         date = scanner.next();
-                        momentController.getFilterByDate(date);
+                        controller.getFilterByDate(date);
                     }
                 }while(filterSelection < 1  || filterSelection > 2);                    
                 
@@ -134,8 +143,6 @@ public final class App {
                 System.out.println("See you later...");
                 break;
             }
-
         }
-
     }
 }

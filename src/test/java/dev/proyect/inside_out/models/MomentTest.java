@@ -1,10 +1,8 @@
 package dev.proyect.inside_out.models;
-
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
-
 import java.time.LocalDate;
 
 public class MomentTest {
@@ -15,7 +13,7 @@ public class MomentTest {
     @BeforeEach
     public void setUp() {
         momentDate = LocalDate.of(2024, 10, 20);
-        moment = new Moment(1, "Mi Título", "Felicidad", "Esta es una descripción", momentDate);
+        moment = new Moment("Mi Título", "Felicidad", "Esta es una descripción", momentDate);
     }
 
     @Test

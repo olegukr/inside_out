@@ -1,7 +1,7 @@
 package dev.proyect.inside_out.models;
 
-import java.util.ArrayList;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Moment {
@@ -15,7 +15,7 @@ public class Moment {
     private static List<Moment> moments = new ArrayList<>();
     private static int maxId;
 
-    public Moment(int id, String title, String emotion, String description, LocalDate momentDate) {
+    public Moment(String title, String emotion, String description, LocalDate momentDate) {
         this.id = maxId++;
         this.title = title;
         this.emotion = emotion;
@@ -25,19 +25,15 @@ public class Moment {
         this.modificationDate = LocalDate.now();
         moments.add(this);
     }
-
     public int getId() {
         return id;
     }
-
     public String getTitle() {
         return title;
     }
-
     public String getEmotion() {
         return emotion;
     }
-
     public String getDescription() {
         return description;
     }
@@ -65,12 +61,10 @@ public class Moment {
         this.title = title;
         updateModificationDate();
     }
-
     public void setEmotion(String emotion) {
         this.emotion = emotion;
         updateModificationDate();
     }
-
     public void setDescription(String description) {
         this.description = description;
         updateModificationDate();
@@ -80,8 +74,16 @@ public class Moment {
         this.momentDate = momentDate;
         updateModificationDate();
     }
-
     private void updateModificationDate() {
         this.modificationDate = LocalDate.now();
     }
 }
+
+
+
+
+
+
+
+
+
