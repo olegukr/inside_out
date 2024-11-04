@@ -1,23 +1,21 @@
 package dev.proyect.inside_out;
+import java.io.IOException;
 import java.util.Scanner;
 
 import dev.proyect.inside_out.controller.MomentController;
 import dev.proyect.inside_out.models.Moment;
 
 public final class App {
-    private static void pressEnterToContinue()
-    {
-            Scanner scanner = new Scanner(System.in);
-            
-            System.out.println();
-            System.out.println("Press Enter key continue...");
-            try
-            {
-                System.in.read();
-                scanner.nextLine();
-            }
-            catch(Exception e)
-            {}
+    
+    private static void pressEnterToContinue(Scanner scanner)
+    {       
+        System.out.println("Press Enter key continue...");
+        try {
+            int read = System.in.read(new byte[2]);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+         
     }
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
@@ -36,15 +34,15 @@ public final class App {
             menuSelection = scanner.nextInt();
             if(menuSelection == 1){
                 System.out.println("menu 1");
-                pressEnterToContinue();
+                pressEnterToContinue(scanner);
             }
             else if(menuSelection == 2){
                 System.out.println("menu 2");
-                pressEnterToContinue();
+                pressEnterToContinue(scanner);
             }
             else if(menuSelection == 3){
                 System.out.println("menu 3");
-                pressEnterToContinue();
+                pressEnterToContinue(scanner);
             }
             else if(menuSelection == 4){
                 int filterSelection;
@@ -92,7 +90,7 @@ public final class App {
                     }
                 }while(filterSelection < 1  || filterSelection > 2);                    
                 
-                pressEnterToContinue();
+                pressEnterToContinue(scanner);
             }
             else if(menuSelection == 5){
                 flag = false;
