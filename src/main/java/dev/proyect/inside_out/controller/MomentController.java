@@ -1,11 +1,9 @@
 package dev.proyect.inside_out.controller;
 import java.util.List;
 import java.util.ArrayList;
-import java.util.Date;
 import dev.proyect.inside_out.models.Moment;
 import dev.proyect.inside_out.models.Emotion;
 import java.time.LocalDate;  
-import java.time.format.DateTimeFormatter;  
 
 public class MomentController {
     
@@ -37,13 +35,11 @@ public class MomentController {
         }
         return momentsByEmotion;
     }
-    public List<Moment> getFilterByDate(String date){
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");        
-        LocalDate inputDate = LocalDate.parse(date, formatter);
+    public List<Moment> getFilterByDate(LocalDate date){
         List<Moment> momentsByDate = new ArrayList<Moment>();
         
         for (Moment moment : Moment.getMoments()) {
-            if (moment.getMomentDate().getMonth() ==  inputDate.getMonth() && moment.getMomentDate().getYear() ==  inputDate.getYear()){
+            if (moment.getMomentDate().getMonth() ==  date.getMonth() && moment.getMomentDate().getYear() ==  date.getYear()){
                 momentsByDate.add(moment);
             }
         }
@@ -52,4 +48,6 @@ public class MomentController {
 
     // updateMomentDate( Date) void {
     // }
+
+
 }

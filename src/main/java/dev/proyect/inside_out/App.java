@@ -129,10 +129,30 @@ public final class App {
                         }while(emotionSelection < 1  || emotionSelection > 10);
                     }
                     else if(filterSelection == 2){
-                        String date = new String();
-                        System.out.print("Ingrese una fecha (dd/mm/year): ");
-                        date = scanner.next();
-                        controller.getFilterByDate(date);
+                       
+                        LocalDate momentDate = null;
+                        while (momentDate == null) {
+                                String date = new String();
+                                System.out.print("Ingrese una fecha (dd/mm/year) para filtar por mes y año: ");
+                                date = scanner.next();
+                            try {
+                                momentDate = LocalDate.parse(date, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+                            } catch (DateTimeParseException e) {
+                                System.out.println("Formato de fecha inválido. Intente de nuevo.");
+                            }
+                        }
+                        
+                        for (Moment moment : controller.getFilterByDate(momentDate)) {
+                            System.out.println("");
+                            System.out.println("ID: " + moment.getId());
+                            System.out.println("Título: " + moment.getTitle());
+                            System.out.println("Emoción: " + moment.getEmotion());
+                            System.out.println("Descripción: " + moment.getDescription());
+                            System.out.println("Fecha del momento: " + moment.getMomentDate());
+                            System.out.println("Fecha del CreationDate: " + moment.getCreationDate());
+                            System.out.println("Fecha del ModificationDate: " + moment.getModificationDate());
+                            System.out.println();
+                        }
                     }
                 }while(filterSelection < 1  || filterSelection > 2);                    
                 
