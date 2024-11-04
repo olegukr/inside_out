@@ -12,9 +12,17 @@ public class MomentController {
     
     private List<Moment> moments = new ArrayList<Moment>();
 
-    // public void addMoment(Moment moment){
+    public void addMoment(String title, int emotionIndex, String description, LocalDate momentDate) {
+        if (emotionIndex < 0 || emotionIndex >= Emotion.getEmotions().size()) {
+            throw new IllegalArgumentException("Emoción no encontrada para el índice proporcionado.");
+        }
         
-    // }
+        String emotion = Emotion.getEmotionByIndex(emotionIndex);
+        
+        Moment newMoment = new Moment(1,title, emotion, description, momentDate);
+        
+        System.out.println("Nuevo momento agregado: " + newMoment.getTitle());
+    }
     // public List<Moment> getMoments(){
 
     // }
