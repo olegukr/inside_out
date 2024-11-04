@@ -31,19 +31,19 @@ public class MomentController {
     // }
     public List<Moment> getFilterByEmotion(int index) {
         int indexEmotion = index - 1;
-        // Date momentDate = new Date();
-        // Moment moment1 = new Moment(1, "Mi Título", "Felicidad", "Esta es una descripción", momentDate);
-        // Moment moment2 = new Moment(1, "Mi Título", "Tristeza", "Esta es una descripción", momentDate);
-        // Moment moment3 = new Moment(1, "Mi Título", "Ansiedad", "Esta es una descripción", momentDate);
-        // Moment moment4 = new Moment(1, "Mi Título", "Ansiedad", "Esta es una descripción", momentDate);
-        // Moment moment5 = new Moment(1, "Mi Título", "Ansiedad", "Esta es una descripción", momentDate);
-        // Moment moment6 = new Moment(1, "Mi Título", "Aburrimiento", "Esta es una descripción", momentDate);
-        // moments.add(moment1);
-        // moments.add(moment2);
-        // moments.add(moment3);
-        // moments.add(moment4);
-        // moments.add(moment5);
-        // moments.add(moment6);
+        LocalDate fechaActual = LocalDate.now();
+        Moment moment1 = new Moment(1, "Mi Título", "Felicidad", "Esta es una descripción", fechaActual);
+        Moment moment2 = new Moment(1, "Mi Título", "Tristeza", "Esta es una descripción", fechaActual);
+        Moment moment3 = new Moment(1, "Mi Título", "Ansiedad", "Esta es una descripción", fechaActual);
+        Moment moment4 = new Moment(1, "Mi Título", "Ansiedad", "Esta es una descripción", fechaActual);
+        Moment moment5 = new Moment(1, "Mi Título", "Ansiedad", "Esta es una descripción", fechaActual);
+        Moment moment6 = new Moment(1, "Mi Título", "Aburrimiento", "Esta es una descripción", fechaActual);
+        moments.add(moment1);
+        moments.add(moment2);
+        moments.add(moment3);
+        moments.add(moment4);
+        moments.add(moment5);
+        moments.add(moment6);
 
         String emotion = Emotion.getEmotionByIndex(indexEmotion);
         List<Moment> momentsByEmotion = new ArrayList<Moment>();
@@ -56,13 +56,15 @@ public class MomentController {
         return momentsByEmotion;
     }
     public List<Moment> getFilterByDate(String date){
-        Date momentDate = new Date();
-        Moment moment1 = new Moment(1, "Mi Título", "Felicidad", "Esta es una descripción", momentDate);
-        Moment moment2 = new Moment(1, "Mi Título", "Tristeza", "Esta es una descripción", momentDate);
-        Moment moment3 = new Moment(1, "Mi Título", "Ansiedad", "Esta es una descripción", momentDate);
-        Moment moment4 = new Moment(1, "Mi Título", "Ansiedad", "Esta es una descripción", momentDate);
-        Moment moment5 = new Moment(1, "Mi Título", "Ansiedad", "Esta es una descripción", momentDate);
-        Moment moment6 = new Moment(1, "Mi Título", "Aburrimiento", "Esta es una descripción", momentDate);
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");        
+        LocalDate inputDate = LocalDate.of(2023, 05,30);
+        Moment moment1 = new Moment(1, "Mi Título", "Felicidad", "Esta es una descripción", inputDate);
+        Moment moment2 = new Moment(1, "Mi Título", "Tristeza", "Esta es una descripción", inputDate);
+        Moment moment3 = new Moment(1, "Mi Título", "Ansiedad", "Esta es una descripción", inputDate);
+        Moment moment4 = new Moment(1, "Mi Título", "Ansiedad", "Esta es una descripción", inputDate);
+        inputDate = LocalDate.of(2023, 04,30);
+        Moment moment5 = new Moment(1, "Mi Título", "Ansiedad", "Esta es una descripción", inputDate);
+        Moment moment6 = new Moment(1, "Mi Título", "Aburrimiento", "Esta es una descripción", inputDate);
         moments.add(moment1);
         moments.add(moment2);
         moments.add(moment3);
@@ -73,15 +75,14 @@ public class MomentController {
 
 
         List<Moment> momentsByDate = new ArrayList<Moment>();
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");        
-        LocalDate inputDate = LocalDate.parse(date, formatter);
-
+        inputDate = LocalDate.parse(date, formatter);
+        
         for (Moment moment : moments) {
-            if (moment.getMomentDate() ==  inputDate.get){
+            if (moment.getMomentDate().getMonth() ==  inputDate.getMonth() && moment.getMomentDate().getYear() ==  inputDate.getYear()){
                 momentsByDate.add(moment);
             }
         }
-        return moments;
+        return momentsByDate;
     }
 
     // updateMomentDate( Date) void {
