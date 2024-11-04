@@ -13,7 +13,7 @@ public class Moment {
     private LocalDate creationDate;
     private LocalDate modificationDate;
     private static List<Moment> moments = new ArrayList<>();
-    private static int maxId = -1;
+    private static int maxId;
 
     public Moment(int id, String title, String emotion, String description, LocalDate momentDate) {
         this.id = maxId++;
