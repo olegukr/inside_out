@@ -13,8 +13,25 @@ public class MomentController {
 
     // public void addMoment(Moment moment){
     // }
-    // public List<Moment> getMoments(){
-    // }
+
+    public List<Moment> getMoments(){
+        Date momentDate = new Date();
+        Moment moment1 = new Moment(1, "Mi Título", "Felicidad", "Esta es una descripción", momentDate);
+        Moment moment2 = new Moment(1, "Mi Título", "Tristeza", "Esta es una descripción", momentDate);
+        Moment moment3 = new Moment(1, "Mi Título", "Ansiedad", "Esta es una descripción", momentDate);
+        Moment moment4 = new Moment(1, "Mi Título", "Ansiedad", "Esta es una descripción", momentDate);
+        Moment moment5 = new Moment(1, "Mi Título", "Ansiedad", "Esta es una descripción", momentDate);
+        Moment moment6 = new Moment(1, "Mi Título", "Aburrimiento", "Esta es una descripción", momentDate);
+        moments.add(moment1);
+        moments.add(moment2);
+        moments.add(moment3);
+        moments.add(moment4);
+        moments.add(moment5);
+        moments.add(moment6);
+        
+        return moments;
+    }
+
     // public List<Moment> deleteMoment(Moment moment){
     // }
     public List<Moment> getFilterByEmotion(int index) {

@@ -1,5 +1,6 @@
 package dev.proyect.inside_out;
 import java.io.IOException;
+import java.util.List;
 import java.util.Scanner;
 
 import dev.proyect.inside_out.controller.MomentController;
@@ -38,6 +39,17 @@ public final class App {
             }
             else if(menuSelection == 2){
                 System.out.println("menu 2");
+                List<Moment> moments = momentController.getMoments();
+                for (Moment moment : moments) {
+                    System.out.println("ID: " + moment.getId());
+                    System.out.println("Título: " + moment.getTitle());
+                    System.out.println("Emoción: " + moment.getEmotion());
+                    System.out.println("Descripción: " + moment.getDescription());
+                    System.out.println("Fecha del momento: " + moment.getMomentDate());
+                    System.out.println("Fecha del CreationDate: " + moment.getCreationDate());
+                    System.out.println("Fecha del ModificationDate: " + moment.getModificationDate());
+                    System.out.println();
+                }
                 pressEnterToContinue(scanner);
             }
             else if(menuSelection == 3){
