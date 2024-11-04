@@ -5,9 +5,9 @@ import java.util.ArrayList;
 import java.util.Date;
 import dev.proyect.inside_out.models.Moment;
 import dev.proyect.inside_out.models.Emotion;
-import java.util.Date;
+import java.time.LocalDate;  
+import java.time.format.DateTimeFormatter;  
 
-// comment
 public class MomentController {
     
     private List<Moment> moments = new ArrayList<Moment>();
@@ -23,7 +23,7 @@ public class MomentController {
     // }
     public List<Moment> getFilterByEmotion(int index) {
         int indexEmotion = index - 1;
-        Date momentDate = new Date(); ;
+        Date momentDate = new Date();
         Moment moment1 = new Moment(1, "Mi Título", "Felicidad", "Esta es una descripción", momentDate);
         Moment moment2 = new Moment(1, "Mi Título", "Tristeza", "Esta es una descripción", momentDate);
         Moment moment3 = new Moment(1, "Mi Título", "Ansiedad", "Esta es una descripción", momentDate);
@@ -47,9 +47,10 @@ public class MomentController {
         }
         return momentsByEmotion;
     }
-    // public List<Moment> getFilterByDate(Date date){
-
-    // }
+    public List<Moment> getFilterByDate(String date){
+        
+        return moments;
+    }
 
     // updateMomentDate( Date) void {
 

@@ -22,6 +22,7 @@ public final class App {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         boolean flag = true;
+        MomentController momentController = new MomentController();
         while(flag){
             int menuSelection;
             System.err.println("");
@@ -77,7 +78,7 @@ public final class App {
                             emotionSelection = scanner.nextInt();
 
                             if(emotionSelection >= 1  && emotionSelection <= 10){
-                                MomentController momentController = new MomentController();
+                                
                                 for (Moment moment : momentController.getFilterByEmotion(emotionSelection)) {
                                     System.out.println();
                                     System.out.println(moment.getMomentDate());
@@ -97,6 +98,7 @@ public final class App {
             }
             else if(menuSelection == 5){
                 flag = false;
+                System.out.println("See you later...");
                 break;
             }
 
