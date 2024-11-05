@@ -84,6 +84,10 @@ public final class App {
             }
             else if(menuSelection == 3){
                 System.out.println("menu 3");
+                System.out.print("Ingresa el identificador del momento: ");
+                int id = scanner.nextInt();
+                scanner.nextLine(); // clear scanner buffer
+                Moment.deleteMoment(id);
                 pressEnterToContinue(scanner);
             }
             else if(menuSelection == 4){
