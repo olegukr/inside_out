@@ -22,6 +22,7 @@ public class MomentController {
     }
 
     // public List<Moment> deleteMoment(Moment moment){
+    // released in class Moment: deleteMoment(int id)
     // }
     public List<Moment> getFilterByEmotion(int index) {
         int indexEmotion = index - 1;
@@ -48,6 +49,5 @@ public class MomentController {
 
     // updateMomentDate( Date) void {
     // }
-
 
 }

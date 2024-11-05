@@ -77,6 +77,12 @@ public class Moment {
     private void updateModificationDate() {
         this.modificationDate = LocalDate.now();
     }
+
+    public static void deleteMoment(int id){
+        var moment = Moment.getMomentById(id);
+        var moments = Moment.getMoments();
+        moments.remove(moment);
+    }
 }
 
 
