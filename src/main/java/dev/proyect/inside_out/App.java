@@ -38,16 +38,20 @@ public final class App {
             System.out.print("Seleccione una opción: ");
             menuSelection = scanner.nextInt();
             if(menuSelection == 1){
-                // MomentController controller = new MomentController();
                 
-                System.out.println("Seleccione una emoción:");
+                System.out.println("\nSeleccione una emoción:\n");
                 List<String> emotions = Emotion.getEmotions();
-                for (int i = 0; i < emotions.size(); i++) {
-                    System.out.println(i + ". " + emotions.get(i));
-                }
-                System.out.print("Ingrese el índice de la emoción: ");
-                int emotionIndex = scanner.nextInt();
-                scanner.nextLine(); 
+                int emotionIndex = 0;
+                do{
+                    for (int i = 0; i < emotions.size(); i++) {
+                        System.out.println(i+1 + ". " + emotions.get(i));
+                    }
+                    System.out.print("Ingrese una opción: "); 
+                    emotionIndex = scanner.nextInt()-1;
+                    scanner.nextLine();
+                }while(emotionIndex < 0  || emotionIndex > 9);
+
+                 
 
                 System.out.print("Ingrese el título: ");
                 String title = scanner.nextLine();
