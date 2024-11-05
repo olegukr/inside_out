@@ -13,7 +13,7 @@ import dev.proyect.inside_out.models.Moment;
 public final class App {
     
     private static void pressEnterToContinue(Scanner scanner)
-    {       
+    {   System.out.println("");    
         System.out.println("Press Enter key continue...");
         try {
             int read = System.in.read(new byte[2]);
@@ -79,7 +79,6 @@ public final class App {
                     System.out.println("Fecha del momento: " + moment.getMomentDate());
                     System.out.println("Fecha del CreationDate: " + moment.getCreationDate());
                     System.out.println("Fecha del ModificationDate: " + moment.getModificationDate());
-                    System.out.println();
                 }
                 pressEnterToContinue(scanner);
             }
@@ -102,28 +101,25 @@ public final class App {
                         int emotionSelection;
                         do{
                             System.out.println("");
-                            System.out.println("Selecciona una emoción:");
-                            System.out.println("1. Emoción");
-                            System.out.println("2. Tristeza");
-                            System.out.println("3. Ira");
-                            System.out.println("4. Asco");
-                            System.out.println("5. Miedo");
-                            System.out.println("6. Ansiedad");
-                            System.out.println("7. Envidia");
-                            System.out.println("8. Vergüenza");
-                            System.out.println("9. Aburrimiento");
-                            System.out.println("10. Nostalgia");
+                            List<String> emotions = Emotion.getEmotions();
+                            for (int i = 0; i < emotions.size(); i++) {
+                                System.out.println(i+1 + ". " + emotions.get(i));
+                            }
                             System.out.print("Ingrese una opción: "); 
                             emotionSelection = scanner.nextInt();
 
                             if(emotionSelection >= 1  && emotionSelection <= 10){
-                                
-                                for (Moment moment : controller.getFilterByEmotion(emotionSelection)) {
+                                List<Moment> filteredByEmotion = controller.getFilterByEmotion(emotionSelection);
+                                for (Moment moment : filteredByEmotion) {
                                     System.out.println();
                                     System.out.println(moment.getMomentDate());
                                     System.out.println(moment.getTitle());
                                     System.out.println(moment.getDescription());
                                     System.out.println(moment.getEmotion());
+                                }
+                                if( filteredByEmotion.size() == 0){
+                                    System.out.println("");
+                                    System.out.println("No hay momentos...");   
                                 }
                             }
                         }while(emotionSelection < 1  || emotionSelection > 10);
@@ -142,7 +138,8 @@ public final class App {
                             }
                         }
                         
-                        for (Moment moment : controller.getFilterByDate(momentDate)) {
+                        List<Moment> filteredByDate = controller.getFilterByDate(momentDate);
+                        for (Moment moment : filteredByDate) {
                             System.out.println("");
                             System.out.println("ID: " + moment.getId());
                             System.out.println("Título: " + moment.getTitle());
@@ -151,7 +148,10 @@ public final class App {
                             System.out.println("Fecha del momento: " + moment.getMomentDate());
                             System.out.println("Fecha del CreationDate: " + moment.getCreationDate());
                             System.out.println("Fecha del ModificationDate: " + moment.getModificationDate());
-                            System.out.println();
+                        }
+                        if( filteredByDate.size() == 0){
+                            System.out.println("");
+                            System.out.println("No hay momentos...");   
                         }
                     }
                 }while(filterSelection < 1  || filterSelection > 2);                    
@@ -160,8 +160,8 @@ public final class App {
             }
             else if(menuSelection == 5){
                 flag = false;
+                System.out.println("");
                 System.out.println("See you later...");
-                break;
             }
         }
     }
