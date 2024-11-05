@@ -15,11 +15,14 @@ public class MomentController{
     
     public static void addMomentMenu(){
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Seleccione una emoción:");
+        System.out.println("\nSeleccione una emoción:\n");
         View.showAllEmotions();
-        System.out.print("Ingrese el índice de la emoción: ");
-        int emotionIndex = scanner.nextInt();
-        scanner.nextLine(); 
+        int emotionIndex;
+        do{
+            System.out.print("Ingrese una opción: "); 
+            emotionIndex = scanner.nextInt()-1;
+            scanner.nextLine();
+        }while(emotionIndex < 0  || emotionIndex > 9);
 
         System.out.print("Ingrese el título: ");
         String title = scanner.nextLine();
@@ -87,10 +90,6 @@ public class MomentController{
     }
 
     private static void addMoment(String title, int emotionIndex, String description, LocalDate momentDate) {
-        if (emotionIndex < 0 || emotionIndex >= Emotion.getEmotions().size()) {
-            throw new IllegalArgumentException("Emoción no encontrada para el índice proporcionado.");
-        }
-        
         String emotion = Emotion.getEmotionByIndex(emotionIndex);
         Moment newMoment = new Moment(title, emotion, description, momentDate);
         System.out.println("Nuevo momento agregado: " + newMoment.getTitle());
