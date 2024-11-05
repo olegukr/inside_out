@@ -30,7 +30,9 @@ public class MomentController{
         System.out.print("Ingrese la descripción: ");
         String description = scanner.nextLine();
 
-        LocalDate momentDate = inputDate();
+        System.out.print("Ingrese la fecha del momento (dd/mm/yyyy): ");
+        String dateString = scanner.nextLine();
+        LocalDate momentDate = inputDate(dateString);
         addMoment(title, emotionIndex, description, momentDate);
         pressEnterToContinue();
     }
@@ -42,14 +44,15 @@ public class MomentController{
 
     public static void deleteMomentMenu(){
         List<Moment> moments = Moment.getMoments();
-
+        Scanner scanner = new Scanner(System.in);
         if(moments.size() > 0){
             for (Moment moment : moments) {
                 System.out.println("\nID: " + moment.getId());
                 System.out.println("Título: " + moment.getTitle());
             }
             System.out.println("\nIngresa el identificador del momento a eliminar: ");
-            int id = new Scanner(System.in).nextInt();
+            int id = scanner.nextInt();
+            scanner.nextLine();
             Moment.deleteMoment(id);
 
         }else{
@@ -81,8 +84,12 @@ public class MomentController{
                 }while(emotionSelection < 1  || emotionSelection > 10);
             }
             else if(filterSelection == 2){
-                LocalDate momentDate = inputDate();
+                System.out.print("Ingrese mes y año para filtrar los momentos  (mm/yyyy): ");
+                String dateString = scanner.next();
+                dateString = "01/"+dateString;
+                LocalDate momentDate = inputDate(dateString);
                 View.showMoments(getFilterByDate(momentDate));
+
             }
         }while(filterSelection < 1  || filterSelection > 2);                    
         
@@ -118,11 +125,9 @@ public class MomentController{
         return momentsByDate;
     }
 
-    private static LocalDate inputDate(){
+    private static LocalDate inputDate(String dateString){
         LocalDate momentDate = null;
         while (momentDate == null) {
-            System.out.print("Ingrese la fecha del momento (dd/mm/yyyy): ");
-            String dateString = new Scanner(System.in).nextLine();
             try {
                 momentDate = LocalDate.parse(dateString, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
             } catch (DateTimeParseException e) {
