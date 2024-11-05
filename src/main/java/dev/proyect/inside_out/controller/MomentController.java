@@ -15,7 +15,7 @@ public class MomentController{
     
     public static void addMomentMenu(){
         Scanner scanner = new Scanner(System.in);
-        System.out.println("\nSeleccione una emoción:\n");
+        System.out.println("\nSeleccione una emoción:");
         View.showAllEmotions();
         int emotionIndex;
         do{
