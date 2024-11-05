@@ -1,8 +1,6 @@
 package dev.proyect.inside_out;
 import java.util.Scanner;
-
 import dev.proyect.inside_out.controller.MomentController;
-import dev.proyect.inside_out.models.Moment;
 import dev.proyect.inside_out.view.View;
 
 public final class App {
@@ -16,23 +14,15 @@ public final class App {
                 MomentController.addMomentMenu();
             }
             else if(menuSelection == 2){
-                View.showMoments(Moment.getMoments());
-                MomentController.pressEnterToContinue();
+                MomentController.showMomentsMenu();
             }
             else if(menuSelection == 3){
-                System.out.println("menu 3");
-                System.out.print("Ingresa el identificador del momento: ");
-                int id = scanner.nextInt();
-                scanner.nextLine(); // clear scanner buffer
-                Moment.deleteMoment(id);
-                pressEnterToContinue(scanner);
+                MomentController.deleteMomentMenu();
             }
             else if(menuSelection == 4){
                 MomentController.filterByMenu();
             }
             else if(menuSelection == 5){
-                System.out.println("");
-                System.out.println("See you later...");
                 break;
             }
         }

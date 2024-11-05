@@ -32,6 +32,32 @@ public class MomentController{
         pressEnterToContinue();
     }
 
+    public static void showMomentsMenu(){
+        View.showMoments(Moment.getMoments());
+        MomentController.pressEnterToContinue();
+    }
+
+    public static void deleteMomentMenu(){
+        List<Moment> moments = Moment.getMoments();
+
+        if(moments.size() > 0){
+            for (Moment moment : moments) {
+                System.out.println("\nID: " + moment.getId());
+                System.out.println("Título: " + moment.getTitle());
+            }
+            System.out.println("\nIngresa el identificador del momento a eliminar: ");
+            int id = new Scanner(System.in).nextInt();
+            Moment.deleteMoment(id);
+
+        }else{
+            System.out.println();
+            System.out.println("\nNo hay momentos...");   
+        }
+          
+        
+        pressEnterToContinue();
+    }
+
     public static void filterByMenu(){
         Scanner scanner = new Scanner(System.in);
         int filterSelection;
@@ -70,9 +96,6 @@ public class MomentController{
         System.out.println("Nuevo momento agregado: " + newMoment.getTitle());
     }
 
-    // public List<Moment> deleteMoment(Moment moment){
-    // released in class Moment: deleteMoment(int id)
-    // }
     private static List<Moment> getFilterByEmotion(int index) {
         String emotion = Emotion.getEmotionByIndex(index - 1);
         List<Moment> momentsByEmotion = new ArrayList<Moment>();
@@ -110,9 +133,8 @@ public class MomentController{
         return momentDate;
     }
 
-    public static void pressEnterToContinue(){   
-        System.out.println("");    
-        System.out.println("Press Enter key continue...");
+    private static void pressEnterToContinue(){   
+        System.out.println("\nPress Enter key continue...");
         try {
             int read = System.in.read(new byte[2]);
         } catch (IOException e) {

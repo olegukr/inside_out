@@ -7,13 +7,12 @@ import dev.proyect.inside_out.models.Moment;
 public class View {
 
     public static void showMainMenu() {
-        System.err.println("");
-        System.err.println("My diario:");
-        System.err.println("1. Añadir momento");
-        System.err.println("2. Ver todos los momentos disponibles");
-        System.err.println("3. Eliminar un momento");
-        System.err.println("4. Filtrar los momentos");
-        System.err.println("5. Salir");
+        System.out.println("\nMy diario:");
+        System.out.println("1. Añadir momento");
+        System.out.println("2. Ver todos los momentos disponibles");
+        System.out.println("3. Eliminar un momento");
+        System.out.println("4. Filtrar los momentos");
+        System.out.println("5. Salir");
         System.out.print("Seleccione una opción: ");
     }
 
@@ -31,18 +30,16 @@ public class View {
 
     public static void showMoments(List<Moment> moments) {
 
-        System.out.println();
         for (Moment moment : moments) {
             showMoment(moment);
         }
         if( moments.size() == 0){
-            System.out.println("No hay momentos...");   
+            System.out.println("\nNo hay momentos...");   
         }
     }
 
     public static void showFilterMenu(){
-        System.out.println("");
-        System.out.println("Filtrar por ...:");
+        System.out.println("\nFiltrar por ...:");
         System.out.println("1. Emoción");
         System.out.println("2. Fecha");
         System.out.print("Ingrese una opción: "); 
@@ -50,8 +47,7 @@ public class View {
 
 
     public static void showMoment(Moment moment) {
-        System.out.println();
-        System.out.println("ID: " + moment.getId());
+        System.out.println("\nID: " + moment.getId());
         System.out.println("Título: " + moment.getTitle());
         System.out.println("Emoción: " + moment.getEmotion());
         System.out.println("Descripción: " + moment.getDescription());
