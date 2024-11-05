@@ -71,6 +71,7 @@ public class MomentController{
     }
 
     // public List<Moment> deleteMoment(Moment moment){
+    // released in class Moment: deleteMoment(int id)
     // }
     private static List<Moment> getFilterByEmotion(int index) {
         String emotion = Emotion.getEmotionByIndex(index - 1);
