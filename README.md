@@ -26,7 +26,7 @@ Follow these steps to set up and run the project locally:
   ```
 2. Navigate to the project folder:
   ```bash
-    cd test
+    cd inside_out
   ```
 ## Diagrams
 
