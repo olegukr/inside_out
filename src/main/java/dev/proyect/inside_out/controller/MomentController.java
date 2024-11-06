@@ -140,7 +140,7 @@ public class MomentController{
     private static void pressEnterToContinue(){   
         System.out.println("\nPress Enter key continue...");
         try {
-            int read = System.in.read(new byte[2]);
+            System.in.read(new byte[2]);
         } catch (IOException e) {
             e.printStackTrace();
         }
