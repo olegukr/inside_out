@@ -209,3 +209,11 @@ Moment added successfully.
 
 ## Authors
 Olena Myroshnykova, Abdias Labrador, Oleg Poberezhets, Kari Tovar
+
+## Additional Resources
+
+- [Original GitHub Repository](https://github.com/abdiaslabrador/test)
+- **Forks from Teammates**
+  - [Teammate 1 Fork](https://github.com/OlenaMyroshnykova/inside_out.git)
+  - [Teammate 2 Fork]([link_to_fork_2](https://github.com/olegukr/inside_out.git))
+- [Project Presentation]([link_to_presentation](https://docs.google.com/presentation/d/17JxhAYAV8vvo8Cg6Y_QzmZ98Du9GujokvZbwcxCCriw/edit#slide=id.g1f87997393_0_782))
