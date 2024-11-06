@@ -36,7 +36,7 @@ Execute the following command:
   npm test
   ```
 This command will generate a coverage report.
-<img src="images/coverage.jpg" title="coverage report" alt="coverage report"/>
+<img src="./images/coverage.jpg" title="coverage report" alt="coverage report"/>
 
 ## Diagrams
 
