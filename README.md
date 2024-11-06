@@ -28,6 +28,15 @@ Follow these steps to set up and run the project locally:
   ```bash
     cd inside_out
   ```
+## Running Tests
+To run tests and check code coverage:
+
+Execute the following command:
+  ```bash
+  npm test
+  ```
+This command will generate a coverage report (consider adding a screenshot or link to coverage details here if needed).
+
 ## Diagrams
 
 Activity diagram
