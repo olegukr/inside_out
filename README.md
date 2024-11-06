@@ -76,3 +76,7 @@ flowchart TD
     AH --> AI[Press any key to go to the main menu]
     AI --> B
 ```
+Classes
+
+## Authors
+Olena Myroshnykova, Abdias Labrador, Oleg Poberezhets, Kari Tovar
