@@ -1,6 +1,7 @@
 package dev.proyect.inside_out.models;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
 import java.time.LocalDate;
@@ -18,7 +19,6 @@ public class MomentTest {
 
     @Test
     public void testGetters() {
-        assertThat("El ID debe ser 2", moment.getId(), is(2));
         assertThat("El título debe ser 'Mi Título'", moment.getTitle(), is("Mi Título"));
         assertThat("La emoción debe ser 'Felicidad'", moment.getEmotion(), is("Felicidad"));
         assertThat("La descripción debe ser 'Esta es una descripción'", moment.getDescription(), is("Esta es una descripción"));

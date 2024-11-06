@@ -8,77 +8,90 @@ import org.junit.jupiter.api.Test;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
 
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.lang.ModuleLayer.Controller;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
+
 import java.time.LocalDate;
 import java.util.List;
 
 public class MomentControllerTest {
 
+    private final ByteArrayOutputStream outputStreamCaptor = new ByteArrayOutputStream();
+    private MomentController momentController;
+
     @BeforeEach
     public void setUp() {
-        // Очистить список моментов перед каждым тестом
+        System.setOut(new PrintStream(outputStreamCaptor));
+        momentController = new MomentController();
         Moment.getMoments().clear();
     }
 
     @Test
-    public void testAddMoment() {
-        // Данные для тестирования
-        String title = "Mi Momento Especial";
-        String emotion = "Alegría"; // Индекс эмоции "Alegría"
-        String description = "Un día inolvidable";
-        LocalDate momentDate = LocalDate.of(2023, 5, 10);
+    public void testAddMomentMenu() {
+        
+        String simulatedInput = "1\nMi Momento Especial\nUn día inolvidable\n10/05/2023\n";
+        System.setIn(new ByteArrayInputStream(simulatedInput.getBytes()));
 
-        // Добавляем момент
-        MomentController.addMomentMenu(title, emotion, description, momentDate);
+        MomentController.addMomentMenu();
 
-        // Проверяем, что момент добавлен в список
         List<Moment> moments = Moment.getMoments();
         assertThat("Debe haber un momento en la lista", moments.size(), is(1));
         Moment addedMoment = moments.get(0);
-        assertThat("El título debe coincidir", addedMoment.getTitle(), is(title));
+        assertThat("El título debe coincidir", addedMoment.getTitle(), is("Mi Momento Especial"));
         assertThat("La emoción debe coincidir", addedMoment.getEmotion(), is("Alegría"));
-        assertThat("La descripción debe coincidir", addedMoment.getDescription(), is(description));
-        assertThat("La fecha debe coincidir", addedMoment.getMomentDate(), is(momentDate));
-    }
+        assertThat("La descripción debe coincidir", addedMoment.getDescription(), is("Un día inolvidable"));
+        assertThat("La fecha debe coincidir", addedMoment.getMomentDate(), is(LocalDate.of(2023, 5, 10)));
+
+        assertThat(outputStreamCaptor.toString().trim(), containsString("Nuevo momento agregado: Mi Momento Especial"));
+        }
 
     @Test
-    public void testDeleteMoment() {
-        // Добавляем момент для удаления
+    public void testDeleteMomentMenu() {
         Moment momentToDelete = new Moment("Eliminar Momento", "Tristeza", "Momento para borrar", LocalDate.now());
-        int initialSize = Moment.getMoments().size();
+        Moment.getMoments().add(momentToDelete);
 
-        // Удаляем момент
-        MomentController.deleteMomentMenu(momentToDelete.getId());
+        assertThat("Debe haber un momento en la lista antes de la eliminación", Moment.getMoments().size(), is(2));
 
-        // Проверяем, что момент удален
-        assertThat("El tamaño de la lista debe haberse reducido en 1", Moment.getMoments().size(), is(initialSize - 1));
-        assertThat("El momento eliminado no debe estar en la lista", Moment.getMoments(), not(hasItem(momentToDelete)));
+        String simulatedInput = momentToDelete.getId() + "\n";
+        System.setIn(new ByteArrayInputStream(simulatedInput.getBytes()));
+
+        momentController.deleteMomentMenu();
+        assertThat("La lista de momentos debe estar vacía después de la eliminación", Moment.getMoments().size(), is(1));
+
     }
 
     @Test
     public void testFilterByEmotion() {
-        // Добавляем несколько моментов с разными эмоциями
         new Moment("Momento Feliz", "Alegría", "Un gran día", LocalDate.now());
         new Moment("Momento Triste", "Tristeza", "Un día triste", LocalDate.now());
 
-        // Фильтруем по эмоции "Alegría"
-        List<Moment> filteredMoments = MomentController.getFilterByEmotion(1);
+        String simulatedInput = "1\n1\n";
+        System.setIn(new ByteArrayInputStream(simulatedInput.getBytes()));
+
+        MomentController.filterByMenu();
         
-        assertThat("Debe haber 1 momento con emoción 'Alegría'", filteredMoments.size(), is(1));
-        assertThat("La emoción del momento filtrado debe ser 'Alegría'", filteredMoments.get(0).getEmotion(), is("Alegría"));
+        String output = outputStreamCaptor.toString().trim();
+        assertThat("Debe mostrar el título del momento con emoción 'Alegría'", output, containsString("Título: Momento Feliz"));
+        assertThat("No debe mostrar el momento con emoción 'Tristeza'", output, not(containsString("Título: Momento Triste")));
     }
 
     @Test
     public void testFilterByDate() {
-        // Добавляем моменты с разными датами
         new Moment("Momento de Mayo", "Alegría", "Momento en mayo", LocalDate.of(2023, 5, 10));
         new Moment("Momento de Junio", "Tristeza", "Momento en junio", LocalDate.of(2023, 6, 15));
 
-        // Фильтруем по дате в мае
-        LocalDate filterDate = LocalDate.of(2023, 5, 10);
-        List<Moment> filteredMoments = MomentController.getFilterByDate(filterDate);
+        String simulatedInput = "2\n05/2023\n";
+        System.setIn(new ByteArrayInputStream(simulatedInput.getBytes()));
 
-        assertThat("Debe haber 1 momento en la fecha de mayo", filteredMoments.size(), is(1));
-        assertThat("La fecha del momento filtrado debe coincidir con la fecha de mayo", filteredMoments.get(0).getMomentDate(), is(filterDate));
+        MomentController.filterByMenu();
+
+        String output = outputStreamCaptor.toString().trim();
+        assertThat("Debe mostrar el título del momento en mayo", output, containsString("Título: Momento de Mayo"));
+        assertThat("No debe mostrar el momento en junio", output, not(containsString("Título: Momento de Junio")));
     }
 }
 
