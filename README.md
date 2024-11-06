@@ -12,7 +12,7 @@
 
 To run this project, you need to have the following installed:
 
-- [Node.js](https://nodejs.org/) (version X.X.X or higher)
+- [Node.js](https://nodejs.org/) (version 20 or higher)
 - [npm](https://www.npmjs.com/) (typically installed with Node.js)
 - Other dependencies listed in `package.json`
 
@@ -77,6 +77,64 @@ flowchart TD
     AI --> B
 ```
 Classes
+```mermaid
+classDiagram
 
+class Moment {
+    - moments: List<Moment>
+    - id: int
+    - maxId: int
+    - modificationDate: LocalDate
+    - momentDate: LocalDate
+    - description: String
+    - emotion: String
+    - title: String
+    + getId(): int
+    + getTitle(): String
+    + getEmotion(): String
+    + getDescription(): String
+    + getMomentDate(): LocalDate
+    + getCreationDate(): LocalDate
+    + getModificationDate(): LocalDate
+    + getMoments(): List<Moment>
+    + getMomentById(int): Moment
+    + setTitle(String): void
+    + setEmotion(String): void
+    + setDescription(String): void
+    + updateModificationDate(): void
+    + deleteMoment(int): void
+}
+
+class MomentController {
+    + addMomentMenu(): void
+    + showMomentsMenu(): void
+    + deleteMomentMenu(): void
+    + filterByMenu(): void
+    + deleteMomentMenu(): void
+    + addMoment(...): void
+    - getFilterByEmotion(int): List<Moment>
+    - getFilterByDate(LocalDate): List<Moment>
+    - inputDate(): LocalDate
+    - pressEnterToContinue(): void
+}
+
+class Emotion {
+    - emotions: List<String>
+    + getEmotionByIndex(int): String
+    + getEmotion(): List<String>
+}
+
+class View {
+    + showMainMenu(): void
+    + showAllEmotions(): void
+    + showMoments(List<Moment>): void
+    + showFilterMenu(): void
+    + showMoment(Moment): void
+}
+
+MomentController --> Moment
+MomentController --> Emotion
+MomentController --> View
+```
 ## Authors
 Olena Myroshnykova, Abdias Labrador, Oleg Poberezhets, Kari Tovar
