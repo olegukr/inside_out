@@ -1,5 +1,7 @@
 ﻿# Inside_out
 
+Inside Out is a console application designed to help users manage memorable moments they’ve experienced, called "My Diary". Each moment has an assigned emotion, a date, and details about the event. Users can add, view, delete, and filter moments based on their emotions or the date.
+
 ## Table of Contents
 
 - [Prerequisites](#prerequisites)
@@ -12,9 +14,10 @@
 
 To run this project, you need to have the following installed:
 
-- [Node.js](https://nodejs.org/) (version 20 or higher)
-- [npm](https://www.npmjs.com/) (typically installed with Node.js)
-- Other dependencies listed in `package.json`
+- [Java Development Kit (JDK)](https://www.oracle.com/java/technologies/javase-downloads.html) (version 11 or higher)
+- [JUnit](https://junit.org/junit5/) for running tests
+- [Hamcrest](http://hamcrest.org/JavaHamcrest/) for flexible assertions in tests
+- [Maven](https://maven.apache.org/) for dependency management and build tasks.
 
 ## Installation
 
