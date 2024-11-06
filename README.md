@@ -212,7 +212,7 @@ Olena Myroshnykova, Abdias Labrador, Oleg Poberezhets, Kari Tovar
 
 ## Additional Resources
 
-- [Original GitHub Repository](https://github.com/abdiaslabrador/test)
+- [Original GitHub Repository](https://github.com/abdiaslabrador/test](https://github.com/abdiaslabrador/inside_out.git)
 - **Forks from Teammates**
   - [Teammate 1 Fork](https://github.com/OlenaMyroshnykova/inside_out.git)
   - [Teammate 2 Fork](https://github.com/olegukr/inside_out.git)
