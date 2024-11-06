@@ -8,6 +8,8 @@ Inside Out is a console application designed to help users manage memorable mome
 - [Installation](#installation)
 - [Running Tests](#running-tests)
 - [Diagrams](#diagrams)
+- [User Stories and Acceptance Criteria](#User-Stories-and-Acceptance-Criteria)
+- [Example Console Interaction](#Example-Console-Interaction)
 - [Authors](#authors)
 
 ## Prerequisites
@@ -36,10 +38,28 @@ To run tests and check code coverage:
 
 Execute the following command:
   ```bash
-  npm test
+  java -jar target/AppTest.jar
   ```
 This command will generate a coverage report.
-<img src="./images/coverage.jpg" title="coverage report" alt="coverage report"/>
+
+<img src="./src/images/coverage.jpg" title="coverage report" alt="coverage report"/>
+
+Example Test Code
+
+```java
+import org.junit.jupiter.api.Test;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.*;
+
+public class MomentTest {
+    @Test
+    public void testAddMoment() {
+        Moment moment = new Moment("Happy Day", "A day at the park", "Joy", LocalDate.of(2024, 5, 1));
+        assertThat(moment.getTitle(), is("Happy Day"));
+        assertThat(moment.getEmotion(), is("Joy"));
+    }
+}
+```
 
 ## Diagrams
 
@@ -149,5 +169,43 @@ MomentController --> Moment
 MomentController --> Emotion
 MomentController --> View
 ```
+## User Stories and Acceptance Criteria
+User Stories:
+As a user, I want to add a memorable moment so that I can view it whenever I want to remember it.
+As a user, I want to retrieve a list of all recorded moments so that I can review them.
+As a user, I want to delete a memorable moment to avoid duplicates and keep my list organized.
+As a user, I want to filter moments by emotion so that I can view specific types of moments.
+As a user, I want to filter moments by month so that I can see moments from a specific time period.
+As a user, I want to exit the program so that I can start a new task.
+
+## Example Console Interaction
+```plaintext
+My Diary:
+1. Add Moment
+2. View All Moments
+3. Delete a Moment
+4. Filter Moments
+5. Exit
+Select an option: 1
+
+Enter the title: A day at the amusement park
+Enter the date (dd/mm/yyyy): 01/05/2024
+Enter the description: A fun day with family and friends.
+
+Select an emotion:
+1. Joy
+2. Sadness
+3. Anger
+4. Disgust
+5. Fear
+6. Anxiety
+7. Envy
+8. Shame
+9. Boredom
+10. Nostalgia
+Enter your choice: 1
+Moment added successfully.
+```
+
 ## Authors
 Olena Myroshnykova, Abdias Labrador, Oleg Poberezhets, Kari Tovar
