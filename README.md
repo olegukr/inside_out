@@ -11,6 +11,7 @@ Inside Out is a console application designed to help users manage memorable mome
 - [User Stories and Acceptance Criteria](#User-Stories-and-Acceptance-Criteria)
 - [Example Console Interaction](#Example-Console-Interaction)
 - [Authors](#authors)
+- [Additional Resources](#Additional-Resources)
 
 ## Prerequisites
 
