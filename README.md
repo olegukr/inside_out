@@ -219,4 +219,4 @@ Olena Myroshnykova, Abdias Labrador, Oleg Poberezhets, Kari Tovar
   - [Oleg Poberezhets Fork](https://github.com/olegukr/inside_out.git)
   - [Kari Tovar Fork](https://github.com/AnaTovar-Arg/inside_out.git)
 - [Project Presentation](https://docs.google.com/presentation/d/17JxhAYAV8vvo8Cg6Y_QzmZ98Du9GujokvZbwcxCCriw/edit#slide=id.g1f87997393_0_782)
-- [Jira Board]((https://olegpoberezhets.atlassian.net/jira/software/projects/SCRUM/boards/1))
+- [Jira Board](https://olegpoberezhets.atlassian.net/jira/software/projects/SCRUM/boards/1)
