@@ -14,12 +14,11 @@ import java.time.format.DateTimeParseException;
 public class MomentController{
     
     public static void start(){
+        Scanner scanner = new Scanner(System.in);
+
         while(true){
             View.showMainMenu();
-            int menuSelection;
-            Scanner scanner = new Scanner(System.in);
-            
-            menuSelection = scanner.nextInt();
+            int menuSelection = scanner.nextInt();
             scanner.nextLine();
 
             if(menuSelection == 1){
@@ -42,8 +41,7 @@ public class MomentController{
     }
 
     public static void addMomentMenu(Scanner scanner){
-        System.out.println("\nSeleccione una emoción:");
-        View.showAllEmotions();
+
         int emotionIndex = View.inputEmotionSelection(scanner);
 
         System.out.print("Ingrese el título: ");
@@ -91,7 +89,6 @@ public class MomentController{
             filterSelection = scanner.nextInt();
             scanner.nextLine();
             if(filterSelection == 1){
-                View.showAllEmotions();
                 View.showMoments(getFilterByEmotion( View.inputEmotionSelection(scanner)));
             }
             else if(filterSelection == 2){
