@@ -18,7 +18,7 @@ public class MomentController{
         View.showAllEmotions();
         int emotionIndex;
         do{
-            System.out.print("Ingrese una opción: "); 
+            System.out.print("\nIngrese una opción: "); 
             emotionIndex = scanner.nextInt()-1;
             scanner.nextLine();
         }while(emotionIndex < 0  || emotionIndex > 9);
@@ -31,7 +31,6 @@ public class MomentController{
 
         String message = "Ingrese la fecha del momento (dd/mm/yyyy): ";
         LocalDate momentDate = inputDate(scanner, message);
-
         addMoment(title, emotionIndex, description, momentDate);
         pressEnterToContinue();
     }
@@ -48,7 +47,7 @@ public class MomentController{
                 System.out.println("\nID: " + moment.getId());
                 System.out.println("Título: " + moment.getTitle());
             }
-            System.out.println("\nIngresa el identificador del momento a eliminar: ");
+            System.out.println("\nIngresa el identificador(ID) del momento a eliminar: ");
             int id = scanner.nextInt();
             scanner.nextLine();
             Moment.deleteMoment(id);
@@ -72,8 +71,8 @@ public class MomentController{
             if(filterSelection == 1){
                 
                 int emotionSelection;
+                View.showAllEmotions();
                 do{
-                    View.showAllEmotions();
                     System.out.print("Ingrese una opción: "); 
                     emotionSelection = scanner.nextInt();
                     scanner.nextLine();
@@ -86,7 +85,6 @@ public class MomentController{
                 String message = "Ingrese mes y año para filtrar los momentos  (mm/yyyy): ";
                 LocalDate momentDate = inputDate(scanner, message);
                 View.showMoments(getFilterByDate(momentDate));
-
             }
         }while(filterSelection < 1  || filterSelection > 2);                    
         
@@ -122,6 +120,7 @@ public class MomentController{
         return momentsByDate;
     }
 
+
     private static LocalDate inputDate(Scanner scanner, String message) {
       
         LocalDate momentDate = null;
@@ -134,15 +133,16 @@ public class MomentController{
             }
             try {
                 momentDate = LocalDate.parse(dateString, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+                return momentDate;
             } catch (DateTimeParseException e) {
                 System.out.println("Formato de fecha inválido. Intente de nuevo.");
             }
         }
-        return momentDate;
+        return null;
     }
 
     private static void pressEnterToContinue(){   
-        System.out.println("\nPress Enter key continue...");
+        System.out.println("\nPresiona Enter para continuar...");
         try {
             System.in.read(new byte[2]);
         } catch (IOException e) {
