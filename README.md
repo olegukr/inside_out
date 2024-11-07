@@ -16,10 +16,11 @@ Inside Out is a console application designed to help users manage memorable mome
 
 To run this project, you need to have the following installed:
 
-- [Java Development Kit (JDK)](https://www.oracle.com/java/technologies/javase-downloads.html) (version 11 or higher)
-- [JUnit](https://junit.org/junit5/) for running tests
-- [Hamcrest](http://hamcrest.org/JavaHamcrest/) for flexible assertions in tests
+- [Java Development Kit (JDK)](https://www.oracle.com/java/technologies/javase-downloads.html) (version 11 or higher).
+- [JUnit](https://junit.org/junit5/) for running tests.
+- [Hamcrest](http://hamcrest.org/JavaHamcrest/) for flexible assertions in tests.
 - [Maven](https://maven.apache.org/) for dependency management and build tasks.
+- [Jira](https://www.atlassian.com/software/jira) for management.
 
 ## Installation
 
@@ -218,3 +219,4 @@ Olena Myroshnykova, Abdias Labrador, Oleg Poberezhets, Kari Tovar
   - [Oleg Poberezhets Fork](https://github.com/olegukr/inside_out.git)
   - [Kari Tovar Fork](https://github.com/AnaTovar-Arg/inside_out.git)
 - [Project Presentation](https://docs.google.com/presentation/d/17JxhAYAV8vvo8Cg6Y_QzmZ98Du9GujokvZbwcxCCriw/edit#slide=id.g1f87997393_0_782)
+- [Jira Board]((https://olegpoberezhets.atlassian.net/jira/software/projects/SCRUM/boards/1))
