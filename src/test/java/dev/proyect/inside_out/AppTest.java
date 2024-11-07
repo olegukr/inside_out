@@ -22,9 +22,8 @@ public class AppTest {
         System.setOut(new PrintStream(outputStreamCaptor));
     }
 
-    @Test
-    public void testAppMainFlow() {
-        
+    // @Test
+    // public void testAppMainFlow() {
     //     App.main(null);
     //     String input = "5\n";
     //     System.setIn(new ByteArrayInputStream(input.getBytes()));
