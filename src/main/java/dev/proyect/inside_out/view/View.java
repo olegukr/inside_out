@@ -1,5 +1,6 @@
 package dev.proyect.inside_out.view;
 import java.util.List;
+import java.util.Scanner;
 
 import dev.proyect.inside_out.models.Emotion;
 import dev.proyect.inside_out.models.Moment;
@@ -55,6 +56,19 @@ public class View {
         System.out.println("Fecha del CreationDate: " + moment.getCreationDate());
         System.out.println("Fecha del ModificationDate: " + moment.getModificationDate());
         
+    }
+
+    public static int inputEmotionSelection(Scanner scanner){
+        int emotionSelection;
+        showAllEmotions();
+        do{
+            System.out.print("\nIngrese una opción: "); 
+            emotionSelection = scanner.nextInt()-1;
+            scanner.nextLine();
+        }while(emotionSelection < 0  || emotionSelection > 9);
+
+
+        return emotionSelection;
     }
 
 }

@@ -80,8 +80,6 @@ public class Moment {
 
     public static void deleteMoment(int id){
         var moment = Moment.getMomentById(id);
-        // var momentsList = Moment.getMoments();
-        // momentsList.remove(moment);
         moments.remove(moment);
     }
 }
