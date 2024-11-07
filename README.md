@@ -212,8 +212,9 @@ Olena Myroshnykova, Abdias Labrador, Oleg Poberezhets, Kari Tovar
 
 ## Additional Resources
 
-- [Original GitHub Repository](https://github.com/abdiaslabrador/test](https://github.com/abdiaslabrador/inside_out.git)
+- [Original GitHub Repository](https://github.com/abdiaslabrador/inside_out.git)
 - **Forks from Teammates**
-  - [Teammate 1 Fork](https://github.com/OlenaMyroshnykova/inside_out.git)
-  - [Teammate 2 Fork](https://github.com/olegukr/inside_out.git)
+  - [Olena Myroshnykova Fork](https://github.com/OlenaMyroshnykova/inside_out.git)
+  - [Oleg Poberezhets Fork](https://github.com/olegukr/inside_out.git)
+  - [Kari Tovar Fork](https://github.com/AnaTovar-Arg/inside_out.git)
 - [Project Presentation](https://docs.google.com/presentation/d/17JxhAYAV8vvo8Cg6Y_QzmZ98Du9GujokvZbwcxCCriw/edit#slide=id.g1f87997393_0_782)
