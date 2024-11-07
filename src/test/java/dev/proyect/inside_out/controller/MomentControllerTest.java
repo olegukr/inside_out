@@ -1,8 +1,6 @@
 package dev.proyect.inside_out.controller;
 
 import dev.proyect.inside_out.models.Moment;
-import dev.proyect.inside_out.models.Emotion;
-import dev.proyect.inside_out.view.View;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -10,13 +8,10 @@ import static org.hamcrest.Matchers.*;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
-import java.lang.ModuleLayer.Controller;
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
-
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Scanner;
 
 public class MomentControllerTest {
 
@@ -28,6 +23,7 @@ public class MomentControllerTest {
         System.setOut(new PrintStream(outputStreamCaptor));
         momentController = new MomentController();
         Moment.getMoments().clear();
+        
     }
 
     @Test
@@ -35,8 +31,9 @@ public class MomentControllerTest {
         
         String simulatedInput = "1\nMi Momento Especial\nUn día inolvidable\n10/05/2023\n";
         System.setIn(new ByteArrayInputStream(simulatedInput.getBytes()));
+        Scanner scanner = new Scanner(System.in);
 
-        MomentController.addMomentMenu();
+        MomentController.addMomentMenu(scanner);
 
         List<Moment> moments = Moment.getMoments();
         assertThat("Debe haber un momento en la lista", moments.size(), is(1));
@@ -58,8 +55,9 @@ public class MomentControllerTest {
 
         String simulatedInput = momentToDelete.getId() + "\n";
         System.setIn(new ByteArrayInputStream(simulatedInput.getBytes()));
+        Scanner scanner = new Scanner(System.in);
 
-        momentController.deleteMomentMenu();
+        MomentController.deleteMomentMenu(scanner);
         assertThat("La lista de momentos debe estar vacía después de la eliminación", Moment.getMoments().size(), is(1));
 
     }
@@ -71,8 +69,9 @@ public class MomentControllerTest {
 
         String simulatedInput = "1\n1\n";
         System.setIn(new ByteArrayInputStream(simulatedInput.getBytes()));
+        Scanner scanner = new Scanner(System.in);
 
-        MomentController.filterByMenu();
+        MomentController.filterByMenu(scanner);
         
         String output = outputStreamCaptor.toString().trim();
         assertThat("Debe mostrar el título del momento con emoción 'Alegría'", output, containsString("Título: Momento Feliz"));
@@ -86,12 +85,33 @@ public class MomentControllerTest {
 
         String simulatedInput = "2\n05/2023\n";
         System.setIn(new ByteArrayInputStream(simulatedInput.getBytes()));
+        Scanner scanner = new Scanner(System.in);
 
-        MomentController.filterByMenu();
+        MomentController.filterByMenu(scanner);
 
         String output = outputStreamCaptor.toString().trim();
         assertThat("Debe mostrar el título del momento en mayo", output, containsString("Título: Momento de Mayo"));
         assertThat("No debe mostrar el momento en junio", output, not(containsString("Título: Momento de Junio")));
+    }
+    
+    @Test
+    public void testShowMomentsMenu() {
+        new Moment("Moment 1", "Alegría", "Descripción 1", LocalDate.of(2023, 1, 10));
+        new Moment("Moment 2", "Tristeza", "Descripción 2", LocalDate.of(2023, 2, 15));
+        String simulatedInput = "\n";
+        System.setIn(new ByteArrayInputStream(simulatedInput.getBytes()));
+        MomentController.showMomentsMenu();
+    
+        String output = outputStreamCaptor.toString().trim();
+        assertThat(output, containsString("Título: Moment 1"));
+        assertThat(output, containsString("Emoción: Alegría"));
+        assertThat(output, containsString("Descripción: Descripción 1"));
+        assertThat(output, containsString("Fecha del momento: 2023-01-10"));
+    
+        assertThat(output, containsString("Título: Moment 2"));
+        assertThat(output, containsString("Emoción: Tristeza"));
+        assertThat(output, containsString("Descripción: Descripción 2"));
+        assertThat(output, containsString("Fecha del momento: 2023-02-15"));
     }
 }
 
