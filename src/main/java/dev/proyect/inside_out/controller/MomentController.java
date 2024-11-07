@@ -76,27 +76,22 @@ public class MomentController{
             System.out.println();
             System.out.println("\nNo hay momentos...");   
         }
-          
-        
         pressEnterToContinue();
     }
 
     public static void filterByMenu(Scanner scanner){
         int filterSelection;
-                
         do{
             View.showFilterMenu();
             filterSelection = scanner.nextInt();
             scanner.nextLine();
             if(filterSelection == 1){
-                View.showMoments(getFilterByEmotion( View.inputEmotionSelection(scanner)));
+                View.showMoments(getFilterByEmotion(View.inputEmotionSelection(scanner)));
             }
             else if(filterSelection == 2){
-                LocalDate momentDate = inputDate(scanner, "Ingrese mes y año para filtrar los momentos  (mm/yyyy): ");
-                View.showMoments(getFilterByDate(momentDate));
+                View.showMoments(getFilterByDate(inputDate(scanner, "Ingrese mes y año para filtrar los momentos  (mm/yyyy): ")));
             }
         }while(filterSelection < 1  || filterSelection > 2);                    
-        
         pressEnterToContinue();
     }
 
@@ -120,7 +115,6 @@ public class MomentController{
 
     private static List<Moment> getFilterByDate(LocalDate date){
         List<Moment> momentsByDate = new ArrayList<Moment>();
-        
         for (Moment moment : Moment.getMoments()) {
             if (moment.getMomentDate().getMonth() ==  date.getMonth() && moment.getMomentDate().getYear() ==  date.getYear()){
                 momentsByDate.add(moment);
@@ -131,9 +125,7 @@ public class MomentController{
 
 
     private static LocalDate inputDate(Scanner scanner, String message) {
-      
         LocalDate momentDate = null;
-
         while (momentDate == null) {
             System.out.println(message);
             String dateString = scanner.nextLine();
