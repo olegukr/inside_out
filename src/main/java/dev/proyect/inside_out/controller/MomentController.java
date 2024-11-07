@@ -13,8 +13,7 @@ import java.time.format.DateTimeParseException;
 
 public class MomentController{
     
-    public static void addMomentMenu(){
-        Scanner scanner = new Scanner(System.in);
+    public static void addMomentMenu(Scanner scanner){
         System.out.println("\nSeleccione una emoción:");
         View.showAllEmotions();
         int emotionIndex;
@@ -30,7 +29,8 @@ public class MomentController{
         System.out.print("Ingrese la descripción: ");
         String description = scanner.nextLine();
 
-        LocalDate momentDate = inputDate("Ingrese la fecha del momento (dd/mm/yyyy): ");
+        String message = "Ingrese la fecha del momento (dd/mm/yyyy): ";
+        LocalDate momentDate = inputDate(scanner, message);
         addMoment(title, emotionIndex, description, momentDate);
         pressEnterToContinue();
     }
@@ -40,9 +40,8 @@ public class MomentController{
         MomentController.pressEnterToContinue();
     }
 
-    public static void deleteMomentMenu(){
+    public static void deleteMomentMenu(Scanner scanner){
         List<Moment> moments = Moment.getMoments();
-        Scanner scanner = new Scanner(System.in);
         if(moments.size() > 0){
             for (Moment moment : moments) {
                 System.out.println("\nID: " + moment.getId());
@@ -62,13 +61,13 @@ public class MomentController{
         pressEnterToContinue();
     }
 
-    public static void filterByMenu(){
-        Scanner scanner = new Scanner(System.in);
+    public static void filterByMenu(Scanner scanner){
         int filterSelection;
                 
         do{
             View.showFilterMenu();
             filterSelection = scanner.nextInt();
+            scanner.nextLine();
             if(filterSelection == 1){
                 
                 int emotionSelection;
@@ -76,13 +75,15 @@ public class MomentController{
                 do{
                     System.out.print("Ingrese una opción: "); 
                     emotionSelection = scanner.nextInt();
+                    scanner.nextLine();
                     if(emotionSelection >= 1  && emotionSelection <= 10){
                         View.showMoments(getFilterByEmotion(emotionSelection));
                     }
                 }while(emotionSelection < 1  || emotionSelection > 10);
             }
             else if(filterSelection == 2){
-                LocalDate momentDate = inputDate("Ingrese mes y año para filtrar los momentos  (mm/yyyy): ");
+                String message = "Ingrese mes y año para filtrar los momentos  (mm/yyyy): ";
+                LocalDate momentDate = inputDate(scanner, message);
                 View.showMoments(getFilterByDate(momentDate));
             }
         }while(filterSelection < 1  || filterSelection > 2);                    
@@ -119,16 +120,17 @@ public class MomentController{
         return momentsByDate;
     }
 
-    private static LocalDate inputDate(String toPrint){        
-        Scanner scanner = new Scanner(System.in);
+
+    private static LocalDate inputDate(Scanner scanner, String message) {
+      
         LocalDate momentDate = null;
 
         while (momentDate == null) {
-            System.out.print(toPrint);
-            String dateString = scanner.next();
-            String[] data = dateString.split("\\/"); 
-            if(data.length < 3 ) dateString = "01/"+dateString;
-
+            System.out.println(message);
+            String dateString = scanner.nextLine();
+            if (dateString.length() == 7){
+                dateString = "01/"+dateString;
+            }
             try {
                 momentDate = LocalDate.parse(dateString, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
                 return momentDate;
