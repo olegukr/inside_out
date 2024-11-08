@@ -211,7 +211,7 @@ Moment added successfully.
 ```
 
 ## Authors
-Olena Myroshnykova, Abdias Labrador, Oleg Poberezhets, Kari Tovar
+Olena Myroshnykova, Abdias Labrador, Oleg Poberezhets, Ana Tovar
 
 ## Additional Resources
 
@@ -219,6 +219,6 @@ Olena Myroshnykova, Abdias Labrador, Oleg Poberezhets, Kari Tovar
 - **Forks from Teammates**
   - [Olena Myroshnykova Fork](https://github.com/OlenaMyroshnykova/inside_out.git)
   - [Oleg Poberezhets Fork](https://github.com/olegukr/inside_out.git)
-  - [Kari Tovar Fork](https://github.com/AnaTovar-Arg/inside_out.git)
+  - [Ana Tovar Fork](https://github.com/AnaTovar-Arg/inside_out.git)
 - [Project Presentation](https://docs.google.com/presentation/d/17JxhAYAV8vvo8Cg6Y_QzmZ98Du9GujokvZbwcxCCriw/edit#slide=id.g1f87997393_0_782)
 - [Jira Board](https://olegpoberezhets.atlassian.net/jira/software/projects/SCRUM/boards/1)
