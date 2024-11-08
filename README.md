@@ -1,4 +1,3 @@
-project in dev
 # Inside_out
 
 Inside Out is a console application designed to help users manage memorable moments they’ve experienced, called "My Diary". Each moment has an assigned emotion, a date, and details about the event. Users can add, view, delete, and filter moments based on their emotions or the date.
@@ -30,7 +29,7 @@ Follow these steps to set up and run the project locally:
 
 1. Clone the repository:
   ```bash
-    git clone https://github.com/OlenaMyroshnykova/inside_out.git
+    git clone https://github.com/abdiaslabrador/inside_out.git
   ```
 2. Navigate to the project folder:
   ```bash
@@ -142,16 +141,11 @@ class Moment {
 }
 
 class MomentController {
+    + start(): void
     + addMomentMenu(): void
     + showMomentsMenu(): void
     + deleteMomentMenu(): void
     + filterByMenu(): void
-    + deleteMomentMenu(): void
-    + addMoment(...): void
-    - getFilterByEmotion(int): List<Moment>
-    - getFilterByDate(LocalDate): List<Moment>
-    - inputDate(): LocalDate
-    - pressEnterToContinue(): void
 }
 
 class Emotion {
@@ -166,11 +160,21 @@ class View {
     + showMoments(List<Moment>): void
     + showFilterMenu(): void
     + showMoment(Moment): void
+    + inputEmotionSelection(): int
 }
 
-MomentController --> Moment
-MomentController --> Emotion
+class Helpers {
+    + addMoment(...): void
+    + getFilterByEmotion(int): List<Moment>
+    + getFilterByDate(LocalDate): List<Moment>
+    + inputDate(): LocalDate
+    + pressEnterToContinue(): void
+}
+
 MomentController --> View
+Helpers --> MomentController
+Moment --> MomentController
+Emotion --> MomentController
 ```
 ## User Stories and Acceptance Criteria
 User Stories:
@@ -211,7 +215,7 @@ Moment added successfully.
 ```
 
 ## Authors
-Olena Myroshnykova, Abdias Labrador, Oleg Poberezhets, Kari Tovar
+Olena Myroshnykova, Abdias Labrador, Oleg Poberezhets, Ana Tovar
 
 ## Additional Resources
 
@@ -219,6 +223,6 @@ Olena Myroshnykova, Abdias Labrador, Oleg Poberezhets, Kari Tovar
 - **Forks from Teammates**
   - [Olena Myroshnykova Fork](https://github.com/OlenaMyroshnykova/inside_out.git)
   - [Oleg Poberezhets Fork](https://github.com/olegukr/inside_out.git)
-  - [Kari Tovar Fork](https://github.com/AnaTovar-Arg/inside_out.git)
+  - [Ana Tovar Fork](https://github.com/AnaTovar-Arg/inside_out.git)
 - [Project Presentation](https://docs.google.com/presentation/d/17JxhAYAV8vvo8Cg6Y_QzmZ98Du9GujokvZbwcxCCriw/edit#slide=id.g1f87997393_0_782)
 - [Jira Board](https://olegpoberezhets.atlassian.net/jira/software/projects/SCRUM/boards/1)
